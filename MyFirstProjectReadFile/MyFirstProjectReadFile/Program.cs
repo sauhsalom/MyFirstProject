@@ -8,7 +8,7 @@
             var conteudo = File.ReadAllText(FilePath);
 
             string[] splitFile = conteudo.Split('\n');
-            // teste git
+            
             foreach (var row in splitFile)
             {
                 Console.Write("Deseja modificar a linha? ");
