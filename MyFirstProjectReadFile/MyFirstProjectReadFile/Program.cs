@@ -10,11 +10,11 @@ namespace MyFirstProjectReadFile
             string FilePath = "C:\\Users\\sauh\\Downloads\\teste1.txt";
             var conteudo = File.ReadAllText(FilePath);
 
-            string[] splitFile = conteudo.Split('\n');
-            string pergunta = "DESEJA MODIFICAR A LINHA?";
+            List<string> splitFile = conteudo.Split('\n').ToList();
 
             foreach (var row in splitFile)
             {
+                string pergunta = "DESEJA MODIFICAR A LINHA?";
                 Console.WriteLine(row);
 
                 Console.Write(pergunta);
@@ -28,9 +28,7 @@ namespace MyFirstProjectReadFile
                 {
                     Console.WriteLine("Ótimo!! Aperte enter para ir para a próxima linha.");
                 }
-
             }
-           
             File.WriteAllLines(FilePath, splitFile);
         }
     }
