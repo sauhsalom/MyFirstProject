@@ -7,7 +7,7 @@ namespace MyFirstProjectReadFile
     {
         static void Main(string[] args)
         {
-            string FilePath = "C:\\Users\\sauh\\Downloads\\Com.csv";
+            string FilePath = "C:\\Users\\sauh\\Downloads\\teste1.txt";
             var conteudo = File.ReadAllText(FilePath);
 
             string[] splitFile = conteudo.Split('\n');
@@ -23,15 +23,15 @@ namespace MyFirstProjectReadFile
                 if (resposta.Contains("sim"))
                 {
                     Console.WriteLine("Digite como ficará a linha:");
-                    string respostafile = Console.ReadLine();
-                    File.WriteAllText(FilePath, respostafile);
                 }
                 else
                 {
                     Console.WriteLine("Ótimo!! Aperte enter para ir para a próxima linha.");
                 }
-            }
-        }
 
+            }
+           
+            File.WriteAllLines(FilePath, splitFile);
+        }
     }
 }
