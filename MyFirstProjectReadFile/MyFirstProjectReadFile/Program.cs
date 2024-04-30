@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.IO;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace MyFirstProjectReadFile
 {
@@ -7,27 +8,33 @@ namespace MyFirstProjectReadFile
     {
         static void Main(string[] args)
         {
-            string FilePath = "C:\\Users\\sauh\\Downloads\\teste1.txt";
+            string FilePath = "C:\\Users\\sauh\\Downloads\\testesauh.csv";
             var conteudo = File.ReadAllText(FilePath);
 
             List<string> splitFile = conteudo.Split('\n').ToList();
 
-            foreach (var row in splitFile)
+            for (int i = 0; i < splitFile.Count; i++)
             {
                 string pergunta = "DESEJA MODIFICAR A LINHA?";
-                Console.WriteLine(row);
+                Console.WriteLine(splitFile[i]);
 
                 Console.Write(pergunta);
                 string resposta = Console.ReadLine();
 
                 if (resposta.Contains("sim"))
                 {
-                    Console.WriteLine("Digite como ficará a linha:");
+                    string linha = "Digite como ficará a linha:";
+                    Console.Write(linha);
+                    string novaLinha = Console.ReadLine()!;
+
+                    splitFile[i] = novaLinha;
                 }
+
                 else
                 {
-                    Console.WriteLine("Ótimo!! Aperte enter para ir para a próxima linha.");
+                    Console.WriteLine("Ótimo!Vamos para a próxima linha.");
                 }
+
             }
             File.WriteAllLines(FilePath, splitFile);
         }
